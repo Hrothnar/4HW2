@@ -16,13 +16,20 @@ class UserTest {
 
     @Test
     public void notNull() {
-        User user = new User();
-        Assertions.assertNotNull(user);
+        User emptyUser = new User();
+        Assertions.assertNotNull(emptyUser);
+        Assertions.assertNull(emptyUser.getLogin());
+        Assertions.assertNull(emptyUser.getEmail());
     }
 
     @Test
-    public void correctEmail() {
-        Assertions.assertTrue(user.getEmail().contains("@") && user.getEmail().contains("."));
+    public void correctEmailFirst() {
+        Assertions.assertTrue(user.getEmail().contains("@"), "Email должен содержать \"@\"");
+    }
+
+    @Test
+    public void correctEmailSecond() {
+        Assertions.assertTrue(user.getEmail().contains("."), "Email должен содержать \".\"");
     }
 
     @Test
